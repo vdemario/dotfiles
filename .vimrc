@@ -44,7 +44,7 @@ let mapleader=","
 
 " pathogen
 " https://github.com/tpope/vim-pathogen
-execute pathogen#infect()
+"execute pathogen#infect()
 filetype plugin indent on
 
 " configs for vim-go
@@ -52,6 +52,7 @@ au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
 au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
 au FileType go nmap <leader>r <Plug>(go-rename)
+au FileType go nmap <leader>m <Plug>(go-install)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>i <Plug>(go-info)
 au FileType go nmap <leader>ds <Plug>(go-def-split)
@@ -62,29 +63,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
 let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-"let g:go_def_mode = 'godef'
+let g:go_def_mode = 'godef'
 let g:go_auto_sameids = 0
-let g:go_metalinter_autosave = 0
-let g:go_auto_type_info = 1
-
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#cmd#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Install(0)
-  endif
-endfunction
-
-autocmd FileType go nmap <leader>m :<C-u>call <SID>build_go_files()<CR>
-
-" go command status
-set statusline+=%#goStatuslineColor#
-set statusline+=%{go#statusline#Show()}
-set statusline+=%*
 
 " expanding tabs to 4 spaces for html and js
 au FileType html set expandtab tabstop=4 shiftwidth=4 cc=0
@@ -178,25 +159,21 @@ set noshowmode
 let g:lightline = {
     \ 'active': {
     \    'left': [ [ 'mode', 'paste' ],
-    \              [ 'fugitive', 'readonly', 'filename', 'modified', 'goStatuslineColor' ]
+    \              [ 'fugitive', 'readonly', 'filename', 'modified' ]
     \            ]
     \ },
     \ 'component': {
-    \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-	\    'goStatuslineColor': '%{go#statusline#Show()}'
+    \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
     \ },
     \ 'component_visible_condition': {
     \    'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
     \ }
     \ }
 
-let g:airline_section_c = "%f %#goStatuslineColor#%{go#statusline#Show()}*%#__restore__#"
-let g:airline_powerline_fonts = 1
-
 colorscheme molokai
 
 " disable movement by arrows and make esc respond immediately (double win!)
-" set noesckeys
+set noesckeys
 
 " away with you, .swp files!
 set noswapfile
@@ -204,23 +181,3 @@ set nobackup
 
 " github.com/maralla/completor.vim
 let g:completor_go_omni_trigger = '(?:\b[^\W\d]\w*|[\]\)])\.(?:[^\W\d]\w*)?'
-
-" save automatically
-set autowrite
-
-" shortcuts for navigating the quickfix
-map <C-c> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-
-" don't use location lists
-let g:go_list_type = "quickfix"
-
-" go coverage
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
-" go alternate between test file and normal file
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
