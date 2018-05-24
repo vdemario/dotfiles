@@ -1,0 +1,8 @@
+# [en] If applied, this commit will...
+# [pt] Se aplicado, esse commit vai...
+
+# [en] Explain why this change is being made
+# [pt] Explique pq a mudança está sendo feita
+
+# [en] Provide links to any relevant tickets, articles or other resources
+# [pt] Links para issues, artigos ou outras referências
