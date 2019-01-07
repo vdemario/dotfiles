@@ -1,0 +1,5 @@
+[user]
+	name = Vitor De Mario
+	email = vitor@neuralmed.com.br
+[credential]
+	helper = osxkeychain
