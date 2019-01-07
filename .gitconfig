@@ -9,3 +9,5 @@
 	process = git-lfs filter-process
 [include]
 	path = .gitconfig.local
+[pull]
+	rebase = true
