@@ -28,7 +28,7 @@ set ignorecase smartcase
 " mostra quantidade de caracteres selecionados quando em modo visual
 set showcmd
 
-set bg=dark
+set bg=light
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -170,7 +170,7 @@ let g:lightline = {
     \ }
     \ }
 
-colorscheme molokai
+"colorscheme molokai
 
 " disable movement by arrows and make esc respond immediately (double win!)
 set noesckeys
