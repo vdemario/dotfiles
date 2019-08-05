@@ -28,7 +28,7 @@ set ignorecase smartcase
 " mostra quantidade de caracteres selecionados quando em modo visual
 set showcmd
 
-set bg=light
+set bg=dark
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
