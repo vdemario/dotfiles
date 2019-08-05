@@ -61,6 +61,11 @@ function fish_prompt
   # Add a newline before new prompts
   # echo -e ''
 
+  # Display [venvname] if in a virtualenv
+  if set -q VIRTUAL_ENV
+      echo -n -s (set_color -b normal black) '[' (basename "$VIRTUAL_ENV") ']' $normal ' '
+  end
+
   # Print pwd or full path
   echo -n -s $cwd $normal
 
