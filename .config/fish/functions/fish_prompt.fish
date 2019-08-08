@@ -63,7 +63,7 @@ function fish_prompt
 
   # Display [venvname] if in a virtualenv
   if set -q VIRTUAL_ENV
-      echo -n -s (set_color -b normal black) '[' (basename "$VIRTUAL_ENV") ']' $normal ' '
+      echo -n -s (set_color -b normal white) '[' (basename "$VIRTUAL_ENV") ']' $normal ' '
   end
 
   # Print pwd or full path
