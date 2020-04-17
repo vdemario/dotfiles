@@ -96,8 +96,8 @@ noremap <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-autocmd Filetype gitcommit setlocal spell textwidth=90
-autocmd Filetype gitcommit set cc=90
+autocmd Filetype gitcommit setlocal spell textwidth=50
+autocmd Filetype gitcommit set cc=50
 
 " NERDTree
 " map NERDTree to Ctrl-N
