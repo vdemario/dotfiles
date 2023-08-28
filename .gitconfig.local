@@ -1,1 +1,5 @@
-/home/vitor/.gitconfig.local##%.vdemariojus
+[user]
+	name = Vitor De Mario
+	email = vitor@jusbrasil.com.br
+[credential]
+    helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret

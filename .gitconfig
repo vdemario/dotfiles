@@ -11,3 +11,11 @@
 	path = .gitconfig.local
 [pull]
 	rebase = true
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[remote "origin"]
+	prune = true
