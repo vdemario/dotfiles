@@ -19,3 +19,6 @@
 	autoSetupRemote = true
 [remote "origin"]
 	prune = true
+[user]
+	name = Vitor De Mario
+	email = vitor@jusbrasil.com.br
