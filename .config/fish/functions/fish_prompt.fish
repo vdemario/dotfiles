@@ -6,11 +6,11 @@
 # - Git branch and dirty state (if inside a git repo)
 
 function _git_branch_name
-  echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+  echo (command git symbolic-ref HEAD 2>/dev/null | sed -e 's|^refs/heads/||')
 end
 
 function _git_is_dirty
-  echo (command git status -s --ignore-submodules=dirty ^/dev/null)
+  echo (command git status -s --ignore-submodules=dirty 2>/dev/null)
 end
 
 function _duration
@@ -62,9 +62,10 @@ function fish_prompt
   # echo -e ''
 
   # Display [venvname] if in a virtualenv
-  # if set -q VIRTUAL_ENV
-  #     echo -n -s (set_color -b normal white) '[' (basename "$VIRTUAL_ENV") ']' $normal ' '
-  # end
+  if set -q VIRTUAL_ENV
+      echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+      # echo -n -s (set_color -b normal white) '[' (basename "$VIRTUAL_ENV") ']' $normal ' '
+  end
 
   # Print pwd or full path
   echo -n -s $cwd $normal
